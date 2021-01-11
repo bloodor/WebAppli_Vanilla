@@ -1,15 +1,15 @@
 const canvas = document.getElementById('canvasTest');
 const ctx = canvas.getContext('2d');
 
-ctx.fillStyle = 'red';
-ctx.fillRect(10, 10, 1000);
-
-let frame = 0;
-let variable = "Hello";
-
+let x = 10;
 function gameLoop()
 {
-    console.log("Hello");
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, 300, 300);
+
+    ctx.fillStyle = 'red';
+    ctx.fillRect(x, 10, 100, 100);
+    x += 0.5
 }
 
-setInterval(gameLoop, 1000)
+setInterval(gameLoop, 1000 / 60)
