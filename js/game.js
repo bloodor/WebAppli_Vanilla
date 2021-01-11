@@ -34,8 +34,8 @@ function rect_create(x, y, w, h, color, dx, dy) {
 let rect = rect_create(100, 200, 50, 100, 'red', 5, -2)
 let rect2 = rect_create(300, 50, 100, 50, 'green', -3, 6)
 
-let circle = arc_create(130, 55, 50, 0, 2 * Math.PI)
-let circle2 = arc_create(90, 150, 75, 0, 2 * Math.PI)
+let circle = arc_create(130, 55, 50, 0, 2 * Math.PI, 3, 5)
+let circle2 = arc_create(90, 150, 75, 0, 2 * Math.PI, -2, 3)
 
 function gameLoop()
 {
@@ -45,11 +45,11 @@ function gameLoop()
 
     drawRect(rect);
     drawRect(rect2);
-    hitBorder(rect);
-    hitBorder(rect2);
-    drawCircle(circle);
+    hitBorderRect(rect);
+    hitBorderRect(rect2);
+//    drawCircle(circle);
     drawCircle(circle2);
-
+    hitBorderCircle(circle);
 }
 
 function drawRect(rect) {
@@ -70,7 +70,7 @@ function drawCircle(circle) {
     circle.y += circle.dy
 }
 
-function hitBorder(rect)
+function hitBorderRect(rect)
 {
     if (rect.x + rect.w >= canvas.width || rect.x <= 0)
     {
@@ -80,6 +80,10 @@ function hitBorder(rect)
     {
         rect.dy *= -1
     }
+}
+
+function hitBorderCircle(circle) {
+    //faire bouger le cercle
 }
 
 setInterval(gameLoop, 1000 / 60)
